@@ -1,15 +1,28 @@
-﻿<h1 class="text-center">Add Task</h1>
+﻿@model TaskTracker.Models.AddTaskViewModel
+
+<h1 class="text-center">Add Task</h1>
 
 <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
         <div class="card shadow-lg p-3">
-            <label class="form-label">Title<span class="text-danger">*</span></label>
-            <input class="form-control mb-4" required />
+            <form method="post">
+                <label class="form-label">Title<span class="text-danger">*</span></label>
+                <input asp-for="Title" class="form-control mb-4" required />
 
-            <label class="form-label">Description</label>
-            <textarea class="form-control mb-4"></textarea>
+                <label class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control mb-4"></textarea>
 
-            <button class="btn btn-outline-success">Add</button>
+                <label class="form-label">Created Date</label>
+                <input asp-for="CreatedDate"  class="form-control mb-4" type="date" />
+
+                <label class="form-label">Due Date</label>
+                <input asp-for="DueDate" class="form-control mb-4" type="date" />
+
+                <label class="form-label">Completed</label>
+                <input asp-for="Complete" class="form-check-input mb-4" type="checkbox" />
+
+                <button type="submit" class="btn btn-outline-success">Add</button>
+            </form>
         </div>
     </div>
 </div>
