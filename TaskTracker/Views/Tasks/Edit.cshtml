@@ -1,0 +1,36 @@
+﻿@model TaskTracker.Models.Entities.Task;
+
+<h1 class="text-center">Edit Task</h1>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-lg p-3">
+            @if (Model is null)
+            {
+                <h1 class="text-center">No task was found matching this id.</h1>
+            }
+            else
+            {
+                <form method="post">
+                    <label class="form-label">Title<span class="text-danger">*</span></label>
+                    <input value="@Model.Title" asp-for="Title" class="form-control mb-4" required />
+
+                    <label class="form-label">Description</label>
+                    <textarea asp-for="Description" class="form-control mb-4">@Model.Description</textarea>
+
+                    <label class="form-label">Created Date</label>
+                    <input value="@Model.CreatedDate" asp-for="CreatedDate" class="form-control mb-4" type="date" />
+
+                    <label class="form-label">Due Date</label>
+                    <input value="@Model.DueDate" asp-for="DueDate" class="form-control mb-4" type="date" />
+
+                    <label class="form-label">Completed</label>
+                    <input checked="@Model.Complete" asp-for="Complete" class="form-check-input mb-4" type="checkbox" />
+
+                    <button type="submit" class="btn btn-outline-warning">Update</button>
+                    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Tasks" asp-route-id="@Model.Id">DELETE</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>
