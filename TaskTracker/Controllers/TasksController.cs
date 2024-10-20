@@ -72,18 +72,19 @@ namespace TaskTracker.Controllers
             return RedirectToAction("List", "Tasks");
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(EditTaskViewModel task)
+        [HttpPost]
+        public async Task<IActionResult> Delete(Models.Entities.Task task)
         {
-            var removeableTask = await dbContext.Tasks.FindAsync(task.Id);
+            var removeableTask = await dbContext.Tasks.AsNoTracking().FirstOrDefaultAsync(t => t.Id == task.Id);
 
             if (removeableTask is not null)
             {
-                dbContext.Tasks.Remove(removeableTask);
+
+                dbContext.Tasks.Remove(task);
                 await dbContext.SaveChangesAsync();
             }
 
-            return RedirectToPage("List", "Tasks");
+            return RedirectToAction("List", "Tasks");
         }
     }
 }
