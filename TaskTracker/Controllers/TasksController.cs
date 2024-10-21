@@ -42,7 +42,7 @@ namespace TaskTracker.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var tasks = await dbContext.Tasks.ToListAsync();
+            var tasks = await dbContext.Tasks.OrderBy(task => task.DueDate).ToListAsync();
             return View(tasks);
         }
 

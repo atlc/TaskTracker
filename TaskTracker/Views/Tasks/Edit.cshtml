@@ -20,10 +20,10 @@
                     <textarea asp-for="Description" class="form-control mb-4">@Model.Description</textarea>
 
                     <label class="form-label">Created Date</label>
-                    <input value="@Model.CreatedDate" asp-for="CreatedDate" class="form-control mb-4" type="date" />
+                    <input value="@Model.CreatedDate.ToString("yyyy-MM-dd")" asp-for="CreatedDate" class="form-control mb-4" type="date" />
 
                     <label class="form-label">Due Date</label>
-                    <input value="@Model.DueDate" asp-for="DueDate" class="form-control mb-4" type="date" />
+                    <input value="@Model.DueDate.ToString("yyyy-MM-dd")" asp-for="DueDate" class="form-control mb-4" type="date" />
 
                     <label class="form-label">Completed</label>
                     <input checked="@Model.Complete" asp-for="Complete" class="form-check-input mb-4" type="checkbox" />
